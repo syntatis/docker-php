@@ -1,0 +1,42 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/.github/workflows/"
+    schedule:
+      interval: "monthly"
+
+  - package-ecosystem: "docker"
+    directory: "/php7.4/"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+    ignore:
+      - dependency-name: php
+      - dependency-name: composer
+
+  - package-ecosystem: "docker"
+    directory: "/php8.0/"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+    ignore:
+      - dependency-name: php
+      - dependency-name: composer
+
+  - package-ecosystem: "docker"
+    directory: "/php8.1/"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+    ignore:
+      - dependency-name: php
+      - dependency-name: composer
+
+  - package-ecosystem: "docker"
+    directory: "/php8.2/"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+    ignore:
+      - dependency-name: php
+      - dependency-name: composer
