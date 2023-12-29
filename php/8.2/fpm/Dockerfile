@@ -1,14 +1,23 @@
-FROM axllent/mailpit as mailpit
 FROM serversideup/php:8.2-fpm
 
-# Xdebug compatibility: https://xdebug.org/docs/compat
-# Use Xdebug for debugging and generating code coverage reports.
-ENV PHP_XDEBUG_VERSION 3.3.0
-
-# Install the PHP extensions.
-RUN pecl install "xdebug-${PHP_XDEBUG_VERSION}"; \
-    docker-php-ext-enable xdebug; \
-    php -m;
+# Install additional packages.
+RUN set -eux; \
+	apt-get update; \
+	apt-get install -y --no-install-recommends \
+    php8.2-xdebug \
+# Require to be able to interact with Git, such as clone, pull, and push to the remote repositories
+# e.g. when developing within the container with devcontainer
+    git \
+    ssh \
+# Required for Composer to unpack ZIP archives that otherwise throws the following warning:
+# As there is no 'unzip' nor '7z' command installed zip files are being unpacked using the PHP zip extension.
+# This may cause invalid reports of corrupted archives. Besides, any UNIX permissions (e.g. executable) defined in the archives will be lost.
+# Installing 'unzip' or '7z' (21.01+) may remediate them.
+    unzip \
+	; \
+  apt-get clean; \
+  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*; \
+  php -m;
 
 # VSCode configs
 RUN mkdir -p /var/www/.vscode-server; \
