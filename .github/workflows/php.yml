@@ -6,15 +6,15 @@ on:
     branches:
       - main
     paths:
-      - ./.github/workflows/php.yml
-      - ./php/**/Dockerfile
+      - '.github/workflows/php.yml'
+      - 'php/**/Dockerfile'
   pull_request:
     types: [opened, reopened, synchronize]
     branches:
       - main
     paths:
-      - ./.github/workflows/php.yml
-      - ./php/**/Dockerfile
+      - '.github/workflows/php.yml'
+      - 'php/**/Dockerfile'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -31,9 +31,9 @@ jobs:
         variant: ["fpm", "cli"]
 
     env:
-      IMAGE_FILE: ./php/${{ matrix.version }}/{{ matrix.variant }}/Dockerfile
+      IMAGE_FILE: ./php/${{ matrix.version }}/${{ matrix.variant }}/Dockerfile
       IMAGE_REGISTRY: ghcr.io
-      IMAGE_TAG: ghcr.io/${{ github.repository_owner }}/php:${{ matrix.version }}-{{ matrix.variant }}
+      IMAGE_TAG: ghcr.io/${{ github.repository_owner }}/php:${{ matrix.version }}-${{ matrix.variant }}
 
     steps:
       - name: Checkout code
