@@ -30,7 +30,8 @@ RUN set -eux; \
   echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_VERSION.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list; \
   apt-get update; \
   apt-get install nodejs -y --no-install-recommends; \
-  rm -rf /var/lib/apt/lists/*; \
+  apt-get clean; \
+  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*; \
   node --version; \
   npm --version; \
   npm install -g bun; \
