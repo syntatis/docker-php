@@ -7,15 +7,9 @@ ENV NODE_VERSION 20
 ENV WP_VERSION 6.4
 
 # Install additional packages.
-RUN set -eux; \
-	apt-get update; \
-	apt-get install -y --no-install-recommends \
-# Ghostscript is required for rendering PDF previews
-		ghostscript \
-# Required for WP-CLI "wp db" command to run properly that otherwise throws "'mysqlcheck': No such file or directory."
-    default-mysql-client \
-	; \
-	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*;
+# The "ghostscript" is required for rendering PDF previews
+# The "default-mysql-client" for WP-CLI "wp db" command to run properly that otherwise throws "'mysqlcheck': No such file or directory."
+RUN docker-php-serversideup-dep-install-debian 'ghostscript default-mysql-client';
 
 COPY --from=wp-cli /usr/local/bin/wp /usr/local/bin/
 
