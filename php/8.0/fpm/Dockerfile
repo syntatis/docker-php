@@ -1,4 +1,4 @@
-FROM serversideup/php:beta-8.0
+FROM serversideup/php:beta-8.0-fpm
 
 # Xdebug compatibility: https://xdebug.org/docs/compat
 ENV PHP_XDEBUG_VERSION 3.3.0
