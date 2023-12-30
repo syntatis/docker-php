@@ -11,6 +11,11 @@ ENV WP_VERSION 6.4
 # The "default-mysql-client" for WP-CLI "wp db" command to run properly that otherwise throws "'mysqlcheck': No such file or directory."
 RUN docker-php-serversideup-dep-install-debian 'ghostscript default-mysql-client';
 
+# Install the PHP extensions.
+# Required for WordPress: "mysqli"
+RUN install-php-extensions 'mysqli'; \
+  php -m;
+
 COPY --from=wp-cli /usr/local/bin/wp /usr/local/bin/
 
 RUN set -eux; \
