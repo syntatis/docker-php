@@ -7,15 +7,15 @@ on:
     branches:
       - main
     paths:
-      - ./.github/workflows/wp.yml
-      - ./wp/**/Dockerfile
+      - '.github/workflows/wp.yml'
+      - 'wp/**/Dockerfile'
   pull_request:
     types: [opened, reopened, synchronize]
     branches:
       - main
     paths:
-      - ./.github/workflows/wp.yml
-      - ./wp/**/Dockerfile
+      - '.github/workflows/wp.yml'
+      - 'wp/**/Dockerfile'
 
 jobs:
   build:
