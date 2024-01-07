@@ -1,4 +1,4 @@
-name: php
+name: nginx
 
 on:
   workflow_dispatch:
