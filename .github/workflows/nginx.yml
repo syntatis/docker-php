@@ -60,4 +60,6 @@ jobs:
           provenance: false
           file: ${{ env.IMAGE_FILE }}
           tags: ${{ env.IMAGE_TAG }}
+          build-args: |
+            ENABLED_MODULES="ndk lua brotli headers-more geoip2"
           platforms: linux/amd64,linux/arm64
