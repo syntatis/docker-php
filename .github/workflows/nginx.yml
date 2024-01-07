@@ -56,7 +56,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          push: false
+          push: ${{ github.event_name != 'pull_request' }}
           provenance: false
           file: ${{ env.IMAGE_FILE }}
           tags: ${{ env.IMAGE_TAG }}
