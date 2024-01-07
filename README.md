@@ -2,7 +2,7 @@
   <strong>🐳 docker-library</strong>
   <p>Docker image to run PHP and WordPress environment</p>
 
-  [![php](https://github.com/syntatis/docker-library/actions/workflows/php.yml/badge.svg)](https://github.com/syntatis/docker-library/actions/workflows/php.yml) [![wp](https://github.com/syntatis/docker-library/actions/workflows/wp.yml/badge.svg)](https://github.com/syntatis/docker-library/actions/workflows/wp.yml)
+  [![php](https://github.com/syntatis/docker-library/actions/workflows/php.yml/badge.svg)](https://github.com/syntatis/docker-library/actions/workflows/php.yml) [![wp](https://github.com/syntatis/docker-library/actions/workflows/wp.yml/badge.svg)](https://github.com/syntatis/docker-library/actions/workflows/wp.yml) [![nginx](https://github.com/syntatis/docker-library/actions/workflows/nginx.yml/badge.svg)](https://github.com/syntatis/docker-library/actions/workflows/nginx.yml)
 </div>
 
 ---
