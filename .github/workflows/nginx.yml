@@ -58,10 +58,10 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          push: ${{ github.event_name != 'pull_request' }}
-          provenance: false
+          push: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
           file: ${{ env.IMAGE_FILE }}
           tags: ${{ env.IMAGE_TAG }}
           build-args: |
             ENABLED_MODULES=ndk lua brotli headers-more geoip2
           platforms: linux/amd64,linux/arm64
+          provenance: false

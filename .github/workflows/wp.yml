@@ -16,6 +16,7 @@ on:
     paths:
       - '.github/workflows/wp.yml'
       - 'wp/**/Dockerfile'
+      - 'wp/**/entrypoint.sh'
 
 jobs:
   build:
@@ -27,8 +28,6 @@ jobs:
         version: ["7.4", "8.0", "8.1", "8.2"]
 
     env:
-      IMAGE_CONTEXT: ./wp/php${{ matrix.version }}
-      IMAGE_FILE: ./wp/php${{ matrix.version }}/Dockerfile
       IMAGE_REGISTRY: ghcr.io
       IMAGE_TAG: ghcr.io/${{ github.repository_owner }}/wp:php${{ matrix.version }}-fpm
 
@@ -58,13 +57,13 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          provenance: false
           push: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
-          context: ${{ env.IMAGE_CONTEXT }}
-          file: ${{ env.IMAGE_FILE }}
-          tags: ${{ env.IMAGE_TAG }}
+          context: ./wp/php${{ matrix.version }}
+          file: ./wp/php${{ matrix.version }}/Dockerfile
           labels: ${{ steps.metadata.outputs.labels }}
+          tags: ${{ env.IMAGE_TAG }}
           platforms: linux/amd64,linux/arm64
+          provenance: false
 
       - name: Test run image
         run: |
