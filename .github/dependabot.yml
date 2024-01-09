@@ -6,37 +6,33 @@ updates:
       interval: "monthly"
 
   - package-ecosystem: "docker"
-    directory: "/php7.4/"
+    directory: "/wp/php7.4/"
     schedule:
       interval: "weekly"
       day: "sunday"
     ignore:
-      - dependency-name: php
-      - dependency-name: composer
+      - dependency-name: wordpress
 
   - package-ecosystem: "docker"
-    directory: "/php8.0/"
+    directory: "/wp/php8.0/"
     schedule:
       interval: "weekly"
       day: "sunday"
     ignore:
-      - dependency-name: php
-      - dependency-name: composer
+      - dependency-name: wordpress
 
   - package-ecosystem: "docker"
-    directory: "/php8.1/"
+    directory: "/wp/php8.1/"
     schedule:
       interval: "weekly"
       day: "sunday"
     ignore:
-      - dependency-name: php
-      - dependency-name: composer
+      - dependency-name: wordpress
 
   - package-ecosystem: "docker"
-    directory: "/php8.2/"
+    directory: "/wp/php8.2/"
     schedule:
       interval: "weekly"
       day: "sunday"
     ignore:
-      - dependency-name: php
-      - dependency-name: composer
+      - dependency-name: wordpress
