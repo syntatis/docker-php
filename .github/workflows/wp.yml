@@ -49,14 +49,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and export
-        uses: docker/build-push-action@v5
-        with:
-          context: ${{ env.IMAGE_CONTEXT }}
-          load: true
-          file: ${{ env.IMAGE_FILE }}
-          tags: ${{ env.IMAGE_TAG }}
-
       - name: Extract metadata (tags, labels) for Docker
         id: metadata
         uses: docker/metadata-action@v5
@@ -66,8 +58,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          load: true
           provenance: false
+          load: true
           push: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
           context: ${{ env.IMAGE_CONTEXT }}
           file: ${{ env.IMAGE_FILE }}
