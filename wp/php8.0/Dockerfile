@@ -22,7 +22,7 @@ RUN set -eux; \
   mkdir -p /var/www/html; \
   chown -R www-data:www-data /var/www/html
 
-COPY --chmod=755 ./entrypoint.sh /etc/entrypoint.d/70-wp-core-download.sh
+COPY --chmod=755 entrypoint.sh /etc/entrypoint.d/70-wp-core-download.sh
 COPY --from=wp-cli /usr/local/bin/wp /usr/local/bin/
 
 RUN set -eux; \
@@ -30,7 +30,7 @@ RUN set -eux; \
   mkdir -p /var/www/.wp-cli; \
   chown -R www-data:www-data /var/www/.wp-cli;
 
-COPY --chmod=644 --chown=www-data:www-data ./wp-cli.yml /var/www/.wp-cli/config.yml
+COPY --chmod=644 --chown=www-data:www-data wp-cli.yml /var/www/.wp-cli/config.yml
 
 RUN wp cli info;
 
