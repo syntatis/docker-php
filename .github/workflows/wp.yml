@@ -52,7 +52,7 @@ jobs:
       - name: Build and export
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ${{ env.IMAGE_CONTEXT }}
           load: true
           file: ${{ env.IMAGE_FILE }}
           tags: ${{ env.IMAGE_TAG }}
