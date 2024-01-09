@@ -30,7 +30,7 @@ RUN set -eux; \
   mkdir -p /var/www/.wp-cli; \
   chown -R www-data:www-data /var/www/.wp-cli;
 
-COPY --chmod=644 --chown=www-data:www-data wp-cli.yml /var/www/.wp-cli/config.yml
+COPY --chmod=644 wp-cli.yml /var/www/.wp-cli/config.yml
 
 RUN wp cli info;
 
