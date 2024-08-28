@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         version: ["7.4", "8.0", "8.1", "8.2"]
         variant: ["fpm", "cli"]

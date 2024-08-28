@@ -1,5 +1,7 @@
 FROM serversideup/php:beta-8.0.30-fpm
 
+USER root;
+
 # Xdebug compatibility: https://xdebug.org/docs/compat
 ENV PHP_XDEBUG_VERSION=3.3.0
 
@@ -21,3 +23,5 @@ RUN install-php-extensions 'xdebug-${PHP_XDEBUG_VERSION}'; \
 # VSCode configs
 RUN mkdir -p /var/www/.vscode-server; \
   chown -R www-data:www-data /var/www/.vscode-server
+
+USER www-data;
