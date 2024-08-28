@@ -1,7 +1,9 @@
-FROM serversideup/php:beta-7.4.33-cli
+FROM serversideup/php:7.4.33-cli
 
 # Xdebug compatibility: https://xdebug.org/docs/compat
 ENV PHP_XDEBUG_VERSION=3.1.6
+
+USER root
 
 # Install dependencies.
 # Git and SSH are required to be able clone, pull, and push to the remote repositories such as when when developing within
@@ -21,3 +23,5 @@ RUN install-php-extensions 'xdebug-${PHP_XDEBUG_VERSION}'; \
 # VSCode configs
 RUN mkdir -p /var/www/.vscode-server; \
   chown -R www-data:www-data /var/www/.vscode-server
+
+USER www-data
