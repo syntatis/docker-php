@@ -3,10 +3,10 @@ FROM ghcr.io/syntatis/php:7.4-fpm
 
 LABEL org.opencontainers.image.description "Image to run WordPress with PHP 7.4. This image includes the WP-CLI, Composer, Node.js, and a few additional packages that may be useful for WordPress development."
 
-ENV NODE_VERSION 20
-ENV WP_CORE_DOWNLOAD true
-ENV WP_VERSION latest
-ENV WP_LOCALE en_US
+ENV NODE_VERSION=20
+ENV WP_CORE_DOWNLOAD=true
+ENV WP_VERSION=latest
+ENV WP_LOCALE=en_US
 
 # Install additional packages.
 # The "ghostscript" is required for rendering PDF previews

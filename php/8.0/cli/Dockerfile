@@ -1,7 +1,7 @@
 FROM serversideup/php:beta-8.0.30-cli
 
 # Xdebug compatibility: https://xdebug.org/docs/compat
-ENV PHP_XDEBUG_VERSION 3.3.0
+ENV PHP_XDEBUG_VERSION=3.3.0
 
 # Install dependencies.
 # Git and SSH are required to be able clone, pull, and push to the remote repositories such as when when developing within
