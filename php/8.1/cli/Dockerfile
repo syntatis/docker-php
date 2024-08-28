@@ -1,4 +1,4 @@
-FROM serversideup/php:8.1.27-cli
+FROM serversideup/php:8.1-cli
 
 # Xdebug compatibility: https://xdebug.org/docs/compat
 ENV PHP_XDEBUG_VERSION=3.3.0

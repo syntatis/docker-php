@@ -1,4 +1,4 @@
-FROM serversideup/php:8.1.27-fpm
+FROM serversideup/php:8.1-fpm
 
 # Xdebug compatibility: https://xdebug.org/docs/compat
 ENV PHP_XDEBUG_VERSION=3.3.0
@@ -25,3 +25,6 @@ RUN install-php-extensions 'xdebug-${PHP_XDEBUG_VERSION}'; \
 # VSCode configs
 RUN mkdir -p /var/www/.vscode-server; \
   chown -R www-data:www-data /var/www/.vscode-server
+
+# Switch back to an underpreviliged user.
+USER www-data

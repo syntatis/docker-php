@@ -3,7 +3,6 @@ FROM ghcr.io/syntatis/php:8.2-fpm
 
 LABEL org.opencontainers.image.description "Image to run WordPress with PHP 8.2. This image includes the WP-CLI, Composer, Node.js, and a few additional packages that may be useful for WordPress development."
 
-ENV NODE_VERSION=20
 ENV WP_CORE_DOWNLOAD=true
 ENV WP_VERSION=latest
 ENV WP_LOCALE=en_US
