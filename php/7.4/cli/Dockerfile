@@ -3,6 +3,8 @@ FROM serversideup/php:7.4.33-cli
 # Xdebug compatibility: https://xdebug.org/docs/compat
 ENV PHP_XDEBUG_VERSION=3.1.6
 
+# The `serversideup/php` image is underprivileged by default.
+# Switch to root to install dependencies and PHP extensions.
 USER root
 
 # Install dependencies.
@@ -24,4 +26,5 @@ RUN install-php-extensions 'xdebug-${PHP_XDEBUG_VERSION}'; \
 RUN mkdir -p /var/www/.vscode-server; \
   chown -R www-data:www-data /var/www/.vscode-server
 
+# Switch back to an underpreviliged user.
 USER www-data

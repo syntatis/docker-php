@@ -3,6 +3,10 @@ FROM serversideup/php:8.0.30-cli
 # Xdebug compatibility: https://xdebug.org/docs/compat
 ENV PHP_XDEBUG_VERSION=3.3.0
 
+# The `serversideup/php` image is underprivileged by default.
+# Switch to root to install dependencies and PHP extensions.
+USER root
+
 # Install dependencies.
 # Git and SSH are required to be able clone, pull, and push to the remote repositories such as when when developing within
 # the container with devcontainer
@@ -21,3 +25,6 @@ RUN install-php-extensions 'xdebug-${PHP_XDEBUG_VERSION}'; \
 # VSCode configs
 RUN mkdir -p /var/www/.vscode-server; \
   chown -R www-data:www-data /var/www/.vscode-server
+
+# Switch back to an underpreviliged user.
+USER www-data

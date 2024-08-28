@@ -1,7 +1,11 @@
-FROM serversideup/php:beta-8.1.27-fpm
+FROM serversideup/php:8.1.27-fpm
 
 # Xdebug compatibility: https://xdebug.org/docs/compat
 ENV PHP_XDEBUG_VERSION=3.3.0
+
+# The `serversideup/php` image is underprivileged by default.
+# Switch to root to install dependencies and PHP extensions.
+USER root
 
 # Install dependencies.
 # Git and SSH are required to be able clone, pull, and push to the remote repositories such as when when developing within
