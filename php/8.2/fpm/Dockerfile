@@ -26,5 +26,5 @@ RUN install-php-extensions 'xdebug-${PHP_XDEBUG_VERSION}'; \
 RUN mkdir -p /var/www/.vscode-server; \
   chown -R www-data:www-data /var/www/.vscode-server
 
-  # Switch back to an underpreviliged user.
+# Switch back to an underpreviliged user.
 USER www-data
