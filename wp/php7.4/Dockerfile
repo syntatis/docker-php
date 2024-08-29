@@ -7,6 +7,10 @@ ENV WP_CORE_DOWNLOAD=true
 ENV WP_VERSION=latest
 ENV WP_LOCALE=en_US
 
+# The `serversideup/php` image is underprivileged by default.
+# Switch to root to install dependencies and PHP extensions.
+USER root
+
 # Install additional packages.
 # The "ghostscript" is required for rendering PDF previews
 # The "default-mysql-client" for WP-CLI "wp db" command to run properly that otherwise throws "'mysqlcheck': No such file or directory."
@@ -30,3 +34,6 @@ RUN set -eux; \
   echo "path: /var/www/html" > /var/www/.wp-cli/config.yml; \
   chown -R www-data:www-data /var/www/.wp-cli; \
   wp cli info;
+
+# Switch back to an underpreviliged user.
+USER www-data
