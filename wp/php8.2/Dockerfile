@@ -1,4 +1,4 @@
-FROM wordpress:cli-2.11.0 AS wp-cli
+FROM wordpress:cli-2.12.0 AS wp-cli
 FROM ghcr.io/syntatis/php:8.2-fpm
 
 LABEL org.opencontainers.image.description "Image to run WordPress with PHP 8.2. This image includes the WP-CLI, Composer, Node.js, and a few additional packages that may be useful for WordPress development."
